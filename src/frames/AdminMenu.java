@@ -28,11 +28,10 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        staff = new javax.swing.JButton();
+        product = new javax.swing.JButton();
+        sales = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,55 +44,49 @@ public class AdminMenu extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(90, 50, 280, 50);
 
-        jButton1.setBackground(new java.awt.Color(255, 211, 172));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton1.setText("Staff Management");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        staff.setBackground(new java.awt.Color(255, 211, 172));
+        staff.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        staff.setText("Staff Management");
+        staff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                staffActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(80, 160, 300, 40);
+        jPanel2.add(staff);
+        staff.setBounds(80, 160, 300, 40);
 
-        jButton2.setBackground(new java.awt.Color(255, 211, 172));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton2.setText("Product Management");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        product.setBackground(new java.awt.Color(255, 211, 172));
+        product.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        product.setText("Product Management");
+        product.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                productActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2);
-        jButton2.setBounds(80, 233, 300, 40);
+        jPanel2.add(product);
+        product.setBounds(80, 233, 300, 40);
 
-        jButton3.setBackground(new java.awt.Color(255, 211, 172));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton3.setText("Sales Report");
-        jPanel2.add(jButton3);
-        jButton3.setBounds(80, 313, 300, 40);
-
-        jButton4.setBackground(new java.awt.Color(255, 211, 172));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton4.setText("LogOut");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        sales.setBackground(new java.awt.Color(255, 211, 172));
+        sales.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        sales.setText("Sales Report");
+        sales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                salesActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4);
-        jButton4.setBounds(80, 460, 300, 40);
+        jPanel2.add(sales);
+        sales.setBounds(80, 313, 300, 40);
 
-        jButton5.setBackground(new java.awt.Color(255, 211, 172));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton5.setText("Customer Management");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        logout.setBackground(new java.awt.Color(255, 211, 172));
+        logout.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        logout.setText("LogOut");
+        logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                logoutActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton5);
-        jButton5.setBounds(80, 390, 300, 40);
+        jPanel2.add(logout);
+        logout.setBounds(80, 460, 300, 40);
 
         jLabel1.setForeground(new java.awt.Color(255, 199, 169));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin.png"))); // NOI18N
@@ -115,30 +108,38 @@ public class AdminMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void staffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        StaffManage staff=new StaffManage();
-        staff.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+        StaffManage s=new StaffManage();
+        s.setVisible(true);
+    }//GEN-LAST:event_staffActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        this.dispose();
         main Main=new main();
         Main.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_logoutActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void productActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        this.dispose();
         Products product=new Products();
         product.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_productActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void salesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        this.setVisible(false);
+        this.dispose();
+        SalesReportPanel s=new SalesReportPanel();
+        s.setVisible(true);
+        
+    }//GEN-LAST:event_salesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,13 +177,12 @@ public class AdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton logout;
+    private javax.swing.JButton product;
+    private javax.swing.JButton sales;
+    private javax.swing.JButton staff;
     // End of variables declaration//GEN-END:variables
 }

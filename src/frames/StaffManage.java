@@ -4,19 +4,49 @@
  */
 package frames;
 
-/**
- *
- * @author pc
- */
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import subclasses.Employe;
+import subclasses.Store;
+
+
 public class StaffManage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form StaffManage
-     */
+   
+    public void setEmpTable(){
+    ArrayList<Employe>emp=Store.getAllEmployes();
+    if(emp!=null){
+    DefaultTableModel model = (DefaultTableModel) eTable.getModel();
+    model.setRowCount(0);
+        for (int i = 0; i < emp.size(); i++) {
+           Object [] cols=new Object[5];
+           cols [0]=emp.get(i).getEname();
+           cols [1]=emp.get(i).geteIdCard();
+           cols [2]=emp.get(i).getPhone_no();
+           cols [3]=emp.get(i).getePost();
+           cols [4]=emp.get(i).getEmail();
+            model.addRow(cols);
+        }
+    
+    }
+    
+    }
+    public void setSingleEmp(Employe e){
+    DefaultTableModel model=(DefaultTableModel) eTable.getModel();
+    model.setRowCount(0);
+    Object [] cols=new Object[5];
+           cols [0]=e.getEname();
+           cols [1]=e.geteIdCard();
+           cols [2]=e.getPhone_no();
+           cols [3]=e.getePost();
+           cols [4]=e.getEmail();
+            model.addRow(cols);
+    
+    }
     public StaffManage() {
         initComponents();
+        Store.dummyemp();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,98 +56,100 @@ public class StaffManage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        searchbyName = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
+        ephone = new javax.swing.JTextField();
+        ecard = new javax.swing.JTextField();
+        epost = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        eTable = new javax.swing.JTable();
+        ename = new javax.swing.JTextField();
+        back = new javax.swing.JButton();
+        add = new javax.swing.JButton();
+        remove = new javax.swing.JButton();
+        btnsearch = new javax.swing.JButton();
+        search = new javax.swing.JLabel();
+
+        jLabel6.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(920, 560));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(searchbyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 15, 412, 34));
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 301, 235, 35));
+        jPanel1.add(ephone, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 174, 235, 31));
+        jPanel1.add(ecard, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 116, 235, 31));
+        jPanel1.add(epost, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 231, 235, 31));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel1.setText("Name");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 80, 80, 30));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 133, 250, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 55, 60, 31));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel3.setText("ID");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 176, 80, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 228, 260, -1));
+        jLabel2.setText("Email");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 301, 60, 35));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel4.setText("PHONE NO.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 220, 86, 30));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 269, 250, -1));
+        jLabel3.setText("Post");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 231, 60, 31));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel5.setText("EMAIL");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 264, 80, 30));
+        jLabel4.setText("Phone No.");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 177, 60, 28));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 85, 250, -1));
+        jLabel5.setText("ID CARD");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 116, 60, 31));
 
-        jButton1.setText("Remove");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 358, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel6.setText("POST");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 128, 80, 30));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 181, 250, -1));
-
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 358, -1, -1));
-
-        jButton3.setText("Add");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 358, -1, -1));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        eTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Name", "ID", "Psot", "Phone No."
+                "Name", "ID Card", "Phone No.", "Post", "Email"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+        ));
+        jScrollPane1.setViewportView(eTable);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 55, 412, -1));
+        jPanel1.add(ename, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 55, 236, 31));
+
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
             }
         });
-        jTable2.setShowHorizontalLines(true);
-        jTable2.setShowVerticalLines(true);
-        jScrollPane2.setViewportView(jTable2);
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 445, 81, -1));
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 510, 450));
+        add.setText("Add");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 388, 81, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skin color.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 1060, 520));
+        remove.setText("Rmove");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 445, 81, -1));
+
+        btnsearch.setText("Search");
+        btnsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 388, 81, -1));
+
+        search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skin color.jpg"))); // NOI18N
+        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,23 +159,68 @@ public class StaffManage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        AdminMenu admin=new AdminMenu();
-        admin.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.dispose();
+        AdminMenu a=new AdminMenu();
+        a.setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        // TODO add your handling code here:
+        if(!ename.getText().isEmpty()&&!ecard.getText().isEmpty()&&!ephone.getText().isEmpty()&&!epost.getText().isEmpty()&&!email.getText().isEmpty())
+        {
+        Employe e=new Employe();
+        e.setEname(ename.getText());
+        e.seteIdCard(Integer.parseInt(ecard.getText()));
+        e.setPhone_no(Integer.parseInt(ephone.getText()));
+        e.setePost(epost.getText());
+        e.setEmail(email.getText());
+        Store.addEmployee(e);
+        setEmpTable();
+        }else{
+        Store.showMsgError("Filled the required field..!");
+        }
+        
+        
+    }//GEN-LAST:event_addActionPerformed
+
+    private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+        // TODO add your handling code here:
+        if(!searchbyName.getText().isEmpty()){
+        Employe obj=Store.searchByNameEmp(searchbyName.getText());
+        if(obj!=null){this.setSingleEmp(obj);}
+        else{Store.showMsgError("Employee "+searchbyName.getText()+" not found");}
+        }else{
+        Store.showMsgError("Search field is empty..!");
+        }
+    }//GEN-LAST:event_btnsearchActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        // TODO add your handling code here:
+         if(!ename.getText().isEmpty()&&!ecard.getText().isEmpty()&&!ephone.getText().isEmpty()&&!epost.getText().isEmpty()&&!email.getText().isEmpty())
+        {
+        Employe e=new Employe();
+        e.setEname(ename.getText());
+        e.seteIdCard(Integer.parseInt(ecard.getText()));
+        e.setPhone_no(Integer.parseInt(ephone.getText()));
+        e.setePost(epost.getText());
+        e.setEmail(email.getText());
+        Store.deletemp(e);
+        }else{
+        Store.showMsgError("Filled the required field..!");
+        }
+
+        
+    }//GEN-LAST:event_removeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,9 +258,15 @@ public class StaffManage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton add;
+    private javax.swing.JButton back;
+    private javax.swing.JButton btnsearch;
+    private javax.swing.JTable eTable;
+    private javax.swing.JTextField ecard;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField ename;
+    private javax.swing.JTextField ephone;
+    private javax.swing.JTextField epost;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -191,12 +274,9 @@ public class StaffManage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton remove;
+    private javax.swing.JLabel search;
+    private javax.swing.JTextField searchbyName;
     // End of variables declaration//GEN-END:variables
 }

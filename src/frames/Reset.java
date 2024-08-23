@@ -4,6 +4,8 @@
  */
 package frames;
 
+import subclasses.Store;
+
 /**
  *
  * @author pc
@@ -29,11 +31,11 @@ public class Reset extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        rname = new javax.swing.JTextField();
+        rquestion = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        reset = new javax.swing.JButton();
+        ranswer = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,19 +49,24 @@ public class Reset extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel2.setText("Security Question");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 83, -1, 39));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 24, 225, 41));
+        jPanel1.add(rname, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 24, 225, 41));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select your question", "Pet Name", "Your Nick Name", "Fav Place " }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 83, 225, 39));
+        rquestion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select your question", "Pet Name", "Your Nick Name", "Fav Place " }));
+        jPanel1.add(rquestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 83, 225, 39));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel3.setText("Answer");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 134, 150, 35));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jButton1.setText("Reset");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 218, 45));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 220, 40));
+        reset.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        reset.setText("Reset");
+        reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 218, 45));
+        jPanel1.add(ranswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 220, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skin color.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -4, 410, 240));
@@ -78,6 +85,21 @@ public class Reset extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+       if(!rname.getText().isEmpty()&&rquestion.getSelectedIndex()!=0&&!ranswer.getText().isEmpty()){
+       String pass=Store.frpass(rname.getText(), (String) rquestion.getSelectedItem(),ranswer.getText());
+       if(pass!=null){
+           Store.showMsgError("your recovery pass is "+pass);
+           this.setVisible(false);
+           this.dispose();
+           main M=new main();
+           M.setVisible(true);
+       }
+       }else{
+       Store.showMsgError("filled the required field");
+       }
+    }//GEN-LAST:event_resetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,14 +137,14 @@ public class Reset extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField ranswer;
+    private javax.swing.JButton reset;
+    private javax.swing.JTextField rname;
+    private javax.swing.JComboBox<String> rquestion;
     // End of variables declaration//GEN-END:variables
 }

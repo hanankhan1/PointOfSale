@@ -2,6 +2,23 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/Products.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/Counter.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/subclasses/Product.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/subclasses/Store.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/StaffManage.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/pointofsale/PointOfSale.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/subclasses/Sale.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/Reset.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/main.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/signup.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/AdminMenu.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/SalesReportPanel.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/subclasses/Employe.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/MainPage.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/Eportal.java</file>
+            <file>file:/D:/projects%20java/PointOfSale/src/frames/Login.java</file>
+        </group>
     </open-files>
 </project-private>

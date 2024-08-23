@@ -27,30 +27,44 @@ public class MainPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        Exit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        Enter = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         jPanel1.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(234, 191, 191));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
-        jButton1.setText("ENTER");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Exit.setBackground(new java.awt.Color(234, 191, 191));
+        Exit.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        Exit.setText("Exit");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(770, 313, 240, 70);
+        jPanel1.add(Exit);
+        Exit.setBounds(770, 410, 240, 70);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 60)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("WELCOME TO BIG MART");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(270, 90, 720, 90);
+
+        Enter.setBackground(new java.awt.Color(234, 191, 191));
+        Enter.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        Enter.setText("ENTER");
+        Enter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnterActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Enter);
+        Enter.setBounds(770, 313, 240, 70);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -71,12 +85,18 @@ public class MainPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-this.setVisible(false);
-main Main=new main();
-Main.setVisible(true);
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+      System.exit(0);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ExitActionPerformed
+
+    private void EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.dispose();
+        main Main = new main();
+        Main.setVisible(true);
+    }//GEN-LAST:event_EnterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,7 +134,8 @@ Main.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Enter;
+    private javax.swing.JButton Exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

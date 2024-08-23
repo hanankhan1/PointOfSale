@@ -4,6 +4,9 @@
  */
 package frames;
 
+import subclasses.Employe;
+import subclasses.Store;
+
 /**
  *
  * @author pc
@@ -15,6 +18,7 @@ public class signup extends javax.swing.JFrame {
      */
     public signup() {
         initComponents();
+        
     }
 
     /**
@@ -32,14 +36,14 @@ public class signup extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ename = new javax.swing.JTextField();
+        epass = new javax.swing.JPasswordField();
+        ecpass = new javax.swing.JPasswordField();
+        equestion = new javax.swing.JComboBox<>();
+        esignup = new javax.swing.JButton();
+        eback = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        eanswer = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,37 +80,42 @@ public class signup extends javax.swing.JFrame {
         jLabel6.setText("Confirm pass");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(20, 200, 230, 50);
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(290, 120, 300, 22);
-        jPanel1.add(jPasswordField1);
-        jPasswordField1.setBounds(290, 160, 300, 22);
-        jPanel1.add(jPasswordField2);
-        jPasswordField2.setBounds(290, 210, 300, 30);
+        jPanel1.add(ename);
+        ename.setBounds(290, 112, 300, 30);
+        jPanel1.add(epass);
+        epass.setBounds(290, 160, 300, 30);
+        jPanel1.add(ecpass);
+        ecpass.setBounds(290, 210, 300, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select your question", "Pet Name", "Your Nick Name", "Fav Place " }));
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(330, 260, 270, 22);
+        equestion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select your question", "Pet Name", "Your Nick Name", "Fav Place " }));
+        jPanel1.add(equestion);
+        equestion.setBounds(330, 260, 270, 22);
 
-        jButton1.setText("Sign up");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(430, 370, 72, 23);
-
-        jButton3.setText("Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        esignup.setText("Sign up");
+        esignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                esignupActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(510, 370, 72, 23);
+        jPanel1.add(esignup);
+        esignup.setBounds(430, 370, 72, 23);
+
+        eback.setText("Back");
+        eback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ebackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(eback);
+        eback.setBounds(510, 370, 72, 23);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Answer");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(20, 300, 170, 30);
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(290, 302, 300, 30);
+        jPanel1.add(eanswer);
+        eanswer.setBounds(290, 302, 300, 30);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.jpg"))); // NOI18N
         jPanel1.add(jLabel7);
@@ -131,12 +140,37 @@ public class signup extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ebackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ebackActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        main Main=new main();
+        this.dispose();
+        main Main = new main();
         Main.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ebackActionPerformed
+
+    private void esignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esignupActionPerformed
+        // TODO add your handling code here:
+        if (!ename.getText().isEmpty()
+                && !new String(epass.getPassword()).isEmpty()
+                && !new String(ecpass.getPassword()).isEmpty()
+                && equestion.getSelectedIndex() != 0
+                && !eanswer.getText().isEmpty()) {
+            if (new String(epass.getPassword()).equals(new String(ecpass.getPassword()))) {
+                Employe e = new Employe(ename.getText(), new String(epass.getPassword()), (String) equestion.getSelectedItem(), eanswer.getText());
+                Store.addEmployee(e);
+                Store.showMsgError("You are Added succfully..!");
+                this.setVisible(false);
+                this.dispose();
+                main M = new main();
+                M.setVisible(true);
+            } else {
+                Store.showMsgError("password and confirm password must be same..!");
+            }
+        } else {
+            Store.showMsgError("Filled the required field..!");
+        }
+
+    }//GEN-LAST:event_esignupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,9 +208,13 @@ public class signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField eanswer;
+    private javax.swing.JButton eback;
+    private javax.swing.JPasswordField ecpass;
+    private javax.swing.JTextField ename;
+    private javax.swing.JPasswordField epass;
+    private javax.swing.JComboBox<String> equestion;
+    private javax.swing.JButton esignup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -185,9 +223,5 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

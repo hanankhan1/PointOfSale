@@ -4,6 +4,9 @@
  */
 package frames;
 
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pc
@@ -30,10 +33,10 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        aname = new javax.swing.JTextField();
+        apass = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbtnLogin = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -60,22 +63,23 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(20, 100, 120, 30);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        aname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                anameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(220, 102, 330, 30);
+        jPanel1.add(aname);
+        aname.setBounds(220, 102, 330, 30);
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        apass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                apassActionPerformed(evt);
             }
         });
-        jPanel1.add(jPasswordField1);
-        jPasswordField1.setBounds(220, 180, 330, 30);
+        jPanel1.add(apass);
+        apass.setBounds(220, 180, 330, 30);
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,10 +89,17 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(380, 260, 90, 30);
 
-        jButton1.setText("LogIn");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(250, 263, 100, 30);
+        jbtnLogin.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jbtnLogin.setText("LogIn");
+        jbtnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnLoginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtnLogin);
+        jbtnLogin.setBounds(250, 263, 100, 30);
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jButton3.setText("Reset");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,34 +123,56 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void apassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_apassActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void anameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_anameActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        main Main=new main();
+        main Main = new main();
         Main.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.setVisible(true);
-        Reset reset=new Reset();
+        Reset reset = new Reset();
         reset.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jbtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLoginActionPerformed
+        // TODO add your handling code here:
+        //user name is admin1122 and pass is 1122
+        if (aname.getText().isEmpty() && apass.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "filled the required field..!");     
+        }
+        else{
+            if(aname.getText().equals("Admin")){
+            if(apass.getText().equals("1122")){
+            this.setVisible(false);
+            this.dispose();
+            AdminMenu admin=new AdminMenu();
+            admin.setVisible(true);
+            }else{
+            JOptionPane.showMessageDialog(null, "Password is invalid..!");
+            }
+            }
+            else{
+            JOptionPane.showMessageDialog(null, "Name is invalid..!");}
+        }
+    }//GEN-LAST:event_jbtnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,7 +210,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField aname;
+    private javax.swing.JPasswordField apass;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -185,7 +219,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jbtnLogin;
     // End of variables declaration//GEN-END:variables
 }
